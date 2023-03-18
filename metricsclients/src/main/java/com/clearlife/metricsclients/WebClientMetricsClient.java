@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import java.io.IOException;
 
 @Log4j2
-public class WebClientMetricsClient {
+public class WebClientMetricsClient implements MetricsClient {
 
     private WebClient webClient;
 
@@ -15,6 +15,7 @@ public class WebClientMetricsClient {
         this.webClient = webClient;
     }
 
+    @Override
     public Flux<ToppingMetrics> metrics() {
         return webClient.get()
                 .uri("http://localhost:8080/metrics")
