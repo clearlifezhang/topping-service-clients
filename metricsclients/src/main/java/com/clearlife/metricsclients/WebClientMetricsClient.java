@@ -16,9 +16,9 @@ public class WebClientMetricsClient implements MetricsClient {
     }
 
     @Override
-    public Flux<ToppingMetrics> metrics() {
+    public Flux<ToppingMetrics> metrics(String toppingName) {
         return webClient.get()
-                .uri("http://localhost:8080/metrics")
+                .uri("http://localhost:8080/metrics/{toppingName}", toppingName)
                 .retrieve()
                 .bodyToFlux(ToppingMetrics.class)
                 .doOnError(IOException.class, e->log.error(e.getMessage()));

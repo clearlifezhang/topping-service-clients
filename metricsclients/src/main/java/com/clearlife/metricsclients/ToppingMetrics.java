@@ -1,6 +1,5 @@
 package com.clearlife.metricsclients;
 
-import ch.qos.logback.core.joran.spi.NoAutoStart;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ToppingMetrics {
     private Integer totalCountPerTopping;
-    private Integer uniqueCountPerTopping;
+    private Integer uniqueUserCountPerTopping;
     private List<String> mostPopularToppings;
     private List<String> leastPopularToppings;
 }

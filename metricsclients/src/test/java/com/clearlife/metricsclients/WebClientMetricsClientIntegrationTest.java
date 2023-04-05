@@ -13,11 +13,11 @@ class WebClientMetricsClientIntegrationTest {
         //given
         WebClientMetricsClient webClientMetricsClient = new WebClientMetricsClient(webClient);
         //when
-        Flux<ToppingMetrics> metricsFlux = webClientMetricsClient.metrics();
+        Flux<ToppingMetrics> metricsFlux = webClientMetricsClient.metrics("Bacon");
         //then
         Assertions.assertNotNull(metricsFlux);
         Flux<ToppingMetrics> fiveMetrics = metricsFlux.take(5);
         Assertions.assertEquals(5, fiveMetrics.count().block());
-        Assertions.assertTrue(fiveMetrics.blockFirst().getTotalCountPerTopping() >= fiveMetrics.blockFirst().getUniqueCountPerTopping());
+        Assertions.assertTrue(fiveMetrics.blockFirst().getTotalCountPerTopping() >= fiveMetrics.blockFirst().getUniqueUserCountPerTopping());
     }
 }

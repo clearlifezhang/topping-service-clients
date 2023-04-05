@@ -14,8 +14,9 @@ public class RSocketMetricsClient implements MetricsClient {
     }
 
     @Override
-    public Flux<ToppingMetrics> metrics() {
+    public Flux<ToppingMetrics> metrics(String toppingName) {
         return rSocketRequester.route("toppingmetrics")
+                .data(toppingName)
                 .retrieveFlux(ToppingMetrics.class)
                 .retry(5)
                 .doOnError(IOException.class, e->log.error(e.getMessage()));
