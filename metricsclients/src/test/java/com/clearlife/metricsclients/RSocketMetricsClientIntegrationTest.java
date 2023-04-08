@@ -14,7 +14,7 @@ class RSocketMetricsClientIntegrationTest {
     private RSocketRequester.Builder builder;
 
     private RSocketRequester createRSocketRequester() {
-        return builder.connectTcp("localhost", 7070).block();
+        return builder.connectTcp("localhost", 30070).block();
     }
 
     @Test
